@@ -23,3 +23,13 @@ func (r *PostgresUserRepository) CreateUser(user *model.User) error {
 	}
 	return nil
 }
+
+func (r *PostgresUserRepository) UserExists(username string) (bool, error) {
+	var exists bool
+	query := `SELECT EXISTS(SELECT 1 FROM users WHERE username = $1)`
+	err := r.db.QueryRow(query, username).Scan(&exists)
+	if err != nil {
+		return false, err
+	}
+	return exists, nil
+}

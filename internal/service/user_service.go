@@ -23,6 +23,15 @@ func (s *UserServiceImpl) RegisterUser(username, password string) error {
 		return errors.NewAppError(errors.ErrPasswordRequired, "Password is required")
 	}
 
+	// Cek apakah username sudah ada
+	exists, err := s.repo.UserExists(username)
+	if err != nil {
+		return errors.NewAppError(errors.ErrInternal, "Error checking if user exists")
+	}
+	if exists {
+		return errors.NewAppError(errors.ErrUsernameTaken, "Username already taken")
+	}
+
 	hashedPassword, err := utils.HashPassword(password)
 	if err != nil {
 		return errors.NewAppError(errors.ErrHashingFailed, "Error hashing password")

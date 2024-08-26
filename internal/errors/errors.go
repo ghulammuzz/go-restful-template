@@ -8,6 +8,7 @@ const (
 	ErrUsernameRequired ErrorCode = "USERNAME_REQUIRED"
 	ErrPasswordRequired ErrorCode = "PASSWORD_REQUIRED"
 	ErrPayload          ErrorCode = "PAYLOAD_ERROR"
+	ErrUsernameTaken    ErrorCode = "USERNAME_TAKEN_ERROR"
 	ErrHashingFailed    ErrorCode = "HASHING_FAILED"
 	ErrInternal         ErrorCode = "INTERNAL_ERROR"
 )
@@ -16,6 +17,7 @@ var ErrorMapping = map[ErrorCode]int{
 	ErrUsernameRequired: http.StatusBadRequest,
 	ErrPasswordRequired: http.StatusBadRequest,
 	ErrPayload:          http.StatusBadRequest,
+	ErrUsernameTaken:    http.StatusBadRequest,
 	ErrHashingFailed:    http.StatusInternalServerError,
 	ErrInternal:         http.StatusInternalServerError,
 }
