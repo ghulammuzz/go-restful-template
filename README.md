@@ -1,1 +1,0 @@
-# go-restful-template
