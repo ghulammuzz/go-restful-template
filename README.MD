@@ -34,26 +34,22 @@ on-going
 2. Instal Dependensi:
 
     ```bash
-    Copy code
     go mod 
     ```
 3. Konfigurasi Lingkungan: Salin file `.env.example` ke `.env` dan sesuaikan dengan konfigurasi Anda:
 
     ```bash
-    Copy code
     cp example.env .env
     ```
 4. Build dan Jalankan Aplikasi: Gunakan Docker untuk membangun dan menjalankan aplikasi di lingkungan pengembangan atau produksi:
 
     ```bash
-    Copy code
     docker build -f deploy/docker/dev.Dockerfile -t go-restful-template:dev .
     docker run -p 8080:8080 --env-file .env go-restful-template:dev
     ```
 5. Deploy dengan Terraform:
 
     ```bash
-    Copy code
     cd deploy/terraform
     terraform init
     terraform apply
